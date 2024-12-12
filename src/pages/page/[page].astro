@@ -1,7 +1,36 @@
 ---
-export const getStaticPaths = async () => {};
+import { GetStaticPaths, InferGetStaticPropsType } from "astro";
+import { getCollection } from "astro:content";
+import Pagination from "../../components/Pagination.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
 
-const { page } = Astro.params;
+export const getStaticPaths = (async ({ paginate }) => {
+    const collection = (await getCollection("pokemon")).sort(
+        (a, b) => new Date(a.data.id).valueOf() - new Date(b.data.id).valueOf(),
+    );
+
+    const pokemons = await Promise.all(
+        collection.map(async (item) => {
+            return { ...item.data };
+        }),
+    );
+    return paginate(pokemons, {
+        pageSize: 9,
+    });
+}) satisfies GetStaticPaths;
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+const { page } = Astro.props;
 ---
 
-<h1>page</h1>
+<BaseLayout>
+    <div>{page.currentPage}</div>
+    <div>{page.lastPage}</div>
+    <div>{page.data.map((pokemon) => <li>{pokemon.title}</li>)}</div>
+    <Pagination
+        currentPage={page.currentPage}
+        lastPage={page.lastPage}
+        url={page.url}
+    />
+</BaseLayout>
