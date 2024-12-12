@@ -1,0 +1,10 @@
+---
+const { title, types, image, id } = Astro.props;
+---
+
+<div>
+    <img src={image} alt=`Pokedex image of ${title}` />
+    <span>#{id.toString().padStart(4, "0")}</span>
+    <h2>{title}</h2>
+    
+</div>
