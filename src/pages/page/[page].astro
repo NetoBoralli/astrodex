@@ -1,16 +1,17 @@
 ---
-import { GetStaticPaths, InferGetStaticPropsType } from "astro";
+import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
 import { getCollection } from "astro:content";
 import Pagination from "../../components/Pagination.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 
 export const getStaticPaths = (async ({ paginate }) => {
     const collection = (await getCollection("pokemon")).sort(
-        (a, b) => new Date(a.data.id).valueOf() - new Date(b.data.id).valueOf(),
+        (a: any, b: any) =>
+            new Date(a.data.id).valueOf() - new Date(b.data.id).valueOf(),
     );
 
     const pokemons = await Promise.all(
-        collection.map(async (item) => {
+        collection.map(async (item: any) => {
             return { ...item.data };
         }),
     );
