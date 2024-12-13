@@ -2,12 +2,12 @@
 const { currentPage, lastPage, url } = Astro.props;
 ---
 
-<section class="w-full flex flex-row justify-between font-semibold">
+<section class="w-full flex flex-row justify-between font-semibold mt-4">
     <div class="flex flex-row gap-6">
         {
             url.first ? (
                 <a
-                    class="hidden sm:block text-black hover:text-opacity-60"
+                    class="hidden sm:block text-black hover:text-opacity-60 no-underline"
                     href={url.first}
                 >
                     First
@@ -16,7 +16,7 @@ const { currentPage, lastPage, url } = Astro.props;
         }
         {
             url.prev ? (
-                <a class="text-black hover:text-opacity-60" href={url.prev}>
+                <a class="text-black hover:text-opacity-60 no-underline" href={url.prev}>
                     Previous
                 </a>
             ) : null
@@ -26,7 +26,7 @@ const { currentPage, lastPage, url } = Astro.props;
     <div class="flex flex-row gap-4">
         {
             url.next ? (
-                <a class="text-black hover:text-opacity-60" href={url.next}>
+                <a class="text-black hover:text-opacity-60 no-underline" href={url.next}>
                     Next
                 </a>
             ) : null
@@ -34,7 +34,7 @@ const { currentPage, lastPage, url } = Astro.props;
         {
             url.last ? (
                 <a
-                    class="hidden sm:block text-black hover:text-opacity-60"
+                    class="hidden sm:block text-black hover:text-opacity-60 no-underline"
                     href={url.last}
                 >
                     Last
