@@ -1,4 +1,6 @@
 ---
+import TypeLabel from "./TypeLabel.astro";
+
 const { title, types, image, id } = Astro.props;
 ---
 
@@ -6,5 +8,7 @@ const { title, types, image, id } = Astro.props;
     <img src={image} alt=`Pokedex image of ${title}` />
     <span>#{id.toString().padStart(4, "0")}</span>
     <h2>{title}</h2>
-    
+    <div class="flex flex-row gap-2">
+        {types.map((type: string) => <TypeLabel type={type} />)}
+    </div>
 </div>

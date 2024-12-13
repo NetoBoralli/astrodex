@@ -1,0 +1,55 @@
+---
+interface Props {
+    type: string;
+}
+interface ColorTypeVariant {
+    normal: string;
+    fire: string;
+    water: string;
+    electric: string;
+    grass: string;
+    ice: string;
+    fighting: string;
+    poison: string;
+    ground: string;
+    flying: string;
+    psychic: string;
+    bug: string;
+    rock: string;
+    ghost: string;
+    dragon: string;
+    dark: string;
+    steel: string;
+    fairy: string;
+}
+const { type } = Astro.props;
+
+const colorTypeVariants: ColorTypeVariant = {
+    normal: "bg-normal",
+    fire: "bg-fire",
+    water: "bg-water",
+    electric: "bg-electric",
+    grass: "bg-grass",
+    ice: "bg-ice",
+    fighting: "bg-fighting",
+    poison: "bg-poison",
+    ground: "bg-ground",
+    flying: "bg-flying",
+    psychic: "bg-psychic",
+    bug: "bg-bug",
+    rock: "bg-rock",
+    ghost: "bg-ghost",
+    dragon: "bg-dragon",
+    dark: "bg-dark",
+    steel: "bg-steel",
+    fairy: "bg-fairy",
+};
+---
+
+<div
+    class={`${colorTypeVariants[type as keyof ColorTypeVariant]} h-6 w-16 flex flex-row items-center justify-center border border-solid border-black/20 rounded`}
+>
+    <span class="text-xs text-white font-fira">
+        {type.toUpperCase()}
+    </span>
+</div>
