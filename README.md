@@ -1,37 +1,9 @@
-# astrodex
-Pokedex built with Astro.js, Node.js and PokeAPI
+# Astrodex
+Pokedex built with Astro.js, Node.js and PokeAPI.
 
-# Astro Starter Kit: Basics
+There's a plan in the future to add the `npm run generatepokemon` execution during the project build, this will avoid the need of uploading more than 1k of markdown files to GitHub, as of now you can ignore this script to the execution of the project.
 
-```sh
-npm create astro@latest -- --template basics
-```
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
-
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+The reasoning of this script was that the base list of pokemons from PokeApi was too simple, only returning name and the query url, without the markdowns being generated before runing the project, all pages of pokemon would require 1 request to get the pokemons and one more request per pokemon in the page to get the necessary info (image, types, etc). This was a simple solution to avoid this problem and still run the project the way I intended. 
 
 ## 🧞 Commands
 
@@ -45,6 +17,7 @@ All commands are run from the root of the project, from a terminal:
 | `npm run preview`         | Preview your build locally, before deploying     |
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
+| `npm run generatepokemon` | Runs the script that generates the pokemon md    |
 
 ## 👀 Want to learn more?
 
